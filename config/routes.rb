@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  devise_for :users
+  
+  root 'meets#index'
+  
   # Routes for the Place resource:
   # CREATE
   get "/places/new", :controller => "places", :action => "new"
@@ -67,7 +72,7 @@ Rails.application.routes.draw do
   get "/delete_meet/:id", :controller => "meets", :action => "destroy"
   #------------------------------
 
-  devise_for :users
+  #devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
