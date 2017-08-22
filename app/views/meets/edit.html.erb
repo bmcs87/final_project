@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @meet.errors.any? %>
+  <% @meet.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Meet #<%= @meet.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_meet/<%= @meet.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meet_name -->
+      <div class="form-group">
+        <label for="meet_name" class="control-label">
+          Meet name
+        </label>
+
+        <input type="text" id="meet_name" name="meet_name" placeholder="Meet name" class="form-control" value="<%= @meet.meet_name %>">
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @meet.city %>">
+      </div>
+
+      <!-- Label and input for state -->
+      <div class="form-group">
+        <label for="state" class="control-label">
+          State
+        </label>
+
+        <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @meet.state %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @meet.date %>">
+      </div>
+
+      <!-- Label and input for places_id -->
+      <div class="form-group">
+        <label for="places_id" class="control-label">
+          Places
+        </label>
+
+        <input type="text" id="places_id" name="places_id" placeholder="Places" class="form-control" value="<%= @meet.places_id %>">
+      </div>
+
+      <!-- Label and input for athlete_notes -->
+      <div class="form-group">
+        <label for="athlete_notes" class="control-label">
+          Athlete notes
+        </label>
+
+        <input type="text" id="athlete_notes" name="athlete_notes" placeholder="Athlete notes" class="form-control" value="<%= @meet.athlete_notes %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Meet
+      </button>
+      or
+      <a href="/meets/<%= @meet.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
