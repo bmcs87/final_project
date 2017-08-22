@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810230637) do
+ActiveRecord::Schema.define(version: 20170822013446) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170810230637) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "actual_times", force: :cascade do |t|
+    t.time "time"
+    t.string "goal_achieved"
+    t.integer "meets_id"
+    t.integer "athletes_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -41,6 +50,30 @@ ActiveRecord::Schema.define(version: 20170810230637) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "goal_times", force: :cascade do |t|
+    t.time "goal_time"
+    t.integer "athletes_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meets", force: :cascade do |t|
+    t.string "meet_name"
+    t.string "city"
+    t.string "state"
+    t.string "date"
+    t.integer "places_id"
+    t.string "athlete_notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
