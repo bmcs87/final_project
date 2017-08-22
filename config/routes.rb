@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :athletes
+  
+  root "meets#index"
+  
   # Routes for the Place resource:
   # CREATE
   get "/places/new", :controller => "places", :action => "new"

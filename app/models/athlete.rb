@@ -30,4 +30,10 @@ class Athlete < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+has_many :goal_times, :foreign_key => "athletes_id", :dependent => :destroy
+has_many :actual_times, :foreign_key => "athletes_id", :dependent => :destroy
+
+has_many :meets, :through => :actual_times, :source => :meets
+         
 end
