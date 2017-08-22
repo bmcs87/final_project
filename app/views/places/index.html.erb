@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>
+    Places
+    <a href="/places/new" class="btn btn-lg btn-success">New Place</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Rank</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @places.each do |place| %>
+      <tr>
+        <td><%= place.rank %></td>
+        <td>
+          <a href="/places/<%= place.id %>" class="btn btn-primary">Show</a>
+          <a href="/places/<%= place.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_place/<%= place.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
