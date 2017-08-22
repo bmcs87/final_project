@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @actual_time.errors.any? %>
+  <% @actual_time.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Actual Time #<%= @actual_time.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_actual_time/<%= @actual_time.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @actual_time.time %>">
+      </div>
+
+      <!-- Label and input for goal_achieved -->
+      <div class="form-group">
+        <label for="goal_achieved" class="control-label">
+          Goal achieved
+        </label>
+
+        <input type="text" id="goal_achieved" name="goal_achieved" placeholder="Goal achieved" class="form-control" value="<%= @actual_time.goal_achieved %>">
+      </div>
+
+      <!-- Label and input for meets_id -->
+      <div class="form-group">
+        <label for="meets_id" class="control-label">
+          Meets
+        </label>
+
+        <input type="text" id="meets_id" name="meets_id" placeholder="Meets" class="form-control" value="<%= @actual_time.meets_id %>">
+      </div>
+
+      <!-- Label and input for athletes_id -->
+      <div class="form-group">
+        <label for="athletes_id" class="control-label">
+          Athletes
+        </label>
+
+        <input type="text" id="athletes_id" name="athletes_id" placeholder="Athletes" class="form-control" value="<%= @actual_time.athletes_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Actual Time
+      </button>
+      or
+      <a href="/actual_times/<%= @actual_time.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
