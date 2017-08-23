@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810230637) do
+ActiveRecord::Schema.define(version: 20170823013608) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170810230637) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "actual_times", force: :cascade do |t|
+    t.time "actual_times"
+    t.string "meet"
+    t.string "place"
+    t.integer "goal_times_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -41,6 +50,76 @@ ActiveRecord::Schema.define(version: 20170810230637) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "goal_times", force: :cascade do |t|
+    t.time "goal_times"
+    t.time "actual_time"
+    t.string "meet"
+    t.integer "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meets", force: :cascade do |t|
+    t.string "meet_name"
+    t.string "city"
+    t.string "state"
+    t.date "date"
+    t.string "athlete_notes"
+    t.integer "places_id"
+    t.integer "actual_times_id"
+    t.integer "goal_times_id"
+    t.integer "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "goal_times"
+    t.time "actual_times"
+    t.string "meet"
+    t.integer "goal_time_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_views_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
   end
 
 end

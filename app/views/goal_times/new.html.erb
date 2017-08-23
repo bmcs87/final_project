@@ -1,0 +1,70 @@
+<!-- Validation failure messages -->
+<% if @goal_time.errors.any? %>
+  <% @goal_time.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Goal Time</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_goal_time" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meet -->
+      <div class="form-group">
+        <label for="meet" class="control-label">
+          Meet
+        </label>
+        <select class="form-control" name="meet">
+          <% Meet.all.each do |meet| %>
+            <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+          <% end %>  
+        </select>
+      </div>
+
+      <!-- Label and input for goal_times -->
+      <div class="form-group">
+        <label for="goal_times" class="control-label">
+          Goal time
+        </label>
+
+        <input type="text" id="goal_times" name="goal_times" placeholder="Goal time" class="form-control" value="<%= @goal_time.goal_times %>">
+      </div>
+
+      <!-- Label and input for actual_time -->
+      <div class="form-group">
+        <label for="actual_time" class="control-label">
+          Actual time
+        </label>
+
+        <input type="text" id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" value="<%= @goal_time.actual_time %>">
+      </div>
+
+      <!-- Label and input for places -->
+      <div class="form-group">
+        <label for="places" class="control-label">
+          Place
+        </label>
+
+        <input type="text" id="places" name="places" placeholder="Place" class="form-control" value="<%= @goal_time.places %>">
+      </div>
+
+      <!-- Label and input for users_id -->
+        <input type="hidden" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @goal_time.users_id %>">
+
+      <button class="btn btn-success">
+        Create Goal Time
+      </button>
+      or
+      <a href="/goal_times">Cancel</a>
+    </form>
+  </div>
+</div>

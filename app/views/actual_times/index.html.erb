@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Actual times
+    <a href="/actual_times/new" class="btn btn-lg btn-success">New Actual time</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Meet</th>
+        <th>Goal times</th>
+        <th>Actual times</th>
+        <th>Place</th>
+      </tr>
+
+      <% @actual_times.each do |actual_time| %>
+      <tr>
+        <td><%= actual_time.meet %></td>
+        <td><%= actual_time.goal_times_id %></td>
+        <td><%= actual_time.actual_times %></td>
+        <td><%= actual_time.place %></td>
+
+        <td>
+          <a href="/actual_times/<%= actual_time.id %>" class="btn btn-primary">Show</a>
+          <a href="/actual_times/<%= actual_time.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_actual_time/<%= actual_time.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
