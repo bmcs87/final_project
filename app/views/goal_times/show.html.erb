@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Goal Time #<%= @goal_time.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Goal times</dt>
+      <dd><%= @goal_time.goal_times %></dd>
+
+      <dt>Actual time</dt>
+      <dd><%= @goal_time.actual_time %></dd>
+
+      <dt>Meet</dt>
+      <dd><%= @goal_time.meet %></dd>
+
+      <dt>Users</dt>
+      <dd><%= @goal_time.users_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/goal_times" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/goal_times/<%= @goal_time.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_goal_time/<%= @goal_time.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

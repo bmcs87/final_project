@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h3>Actual Time #<%= @actual_time.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Meet</dt>
+      <dd><%= @actual_time.meet %></dd>
+     
+      <dt>Goal times</dt>
+      <dd><%= @actual_time.goal_times_id %></dd>
+      
+      <dt>Actual times</dt>
+      <dd><%= @actual_time.actual_times %></dd>
+
+      <dt>Place</dt>
+      <dd><%= @actual_time.place %></dd>
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/actual_times" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/actual_times/<%= @actual_time.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_actual_time/<%= @actual_time.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
