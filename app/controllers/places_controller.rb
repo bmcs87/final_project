@@ -23,7 +23,8 @@ class PlacesController < ApplicationController
     @place.goal_times = params[:goal_times]
     @place.actual_times = params[:actual_times]
     @place.meet = params[:meet]
-    @place.goal_time_id = params[:goal_time_id]
+    #@place.users_id = params[:users_id]
+    #@place.goal_time_id = params[:goal_time_id]
 
     save_status = @place.save
 
@@ -46,7 +47,7 @@ class PlacesController < ApplicationController
     @place.goal_times = params[:goal_times]
     @place.actual_times = params[:actual_times]
     @place.meet = params[:meet]
-    @place.goal_time_id = params[:goal_time_id]
+    #@place.goal_time_id = params[:goal_time_id]
 
     save_status = @place.save
 

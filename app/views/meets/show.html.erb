@@ -17,11 +17,23 @@
       <dt>Date</dt>
       <dd><%= @meet.date %></dd>
 
-      <dt>Goal times</dt>
-      <dd><%= @meet.goal_times_id %></dd>
+      <dt>Goal Times</dt>
+      <dd>
+        <% if @meet.goal_time.present? %>
+          <%= link_to("#{@meet.goal_time.time.strftime('%I:%M')} (edit)", "/goal_times/#{@meet.goal_time.id}/edit") %>
+        <% else %>
+          <%= link_to('Set Goal Time', goal_times_new_path(meet_id: @meet.id)) %>
+        <% end %>
+      </dd>
 
       <dt>Actual times</dt>
-      <dd><%= @meet.actual_times_id %></dd>
+      <dd>
+          <% @meet.actual_times.each do |actual_time| %>
+            <%= actual_time.time %><br/>
+          <% end %>
+          <br>
+          <%= link_to('Add Actual Time', actual_times_new_path(meet_id: @meet.id)) %>
+      </dd>
 
       <dt>Place</dt>
       <dd><%= @meet.places_id %></dd>

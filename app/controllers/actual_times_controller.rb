@@ -12,7 +12,7 @@ class ActualTimesController < ApplicationController
   end
 
   def new
-    @actual_time = ActualTime.new
+    @actual_time = ActualTime.new meet_id: params[:meet_id]
 
     render("actual_times/new.html.erb")
   end
@@ -20,11 +20,12 @@ class ActualTimesController < ApplicationController
   def create
     @actual_time = ActualTime.new
 
-    @actual_time.actual_times = params[:actual_times]
-    @actual_time.meet = params[:meet]
+    @actual_time.time = params[:time]
+    @actual_time.meet_id = params[:meet_id]
     @actual_time.place = params[:place]
     @actual_time.goal_times_id = params[:goal_times_id]
 
+    #raise @actual_time.valid?.inspect
     save_status = @actual_time.save
 
     if save_status == true
@@ -43,8 +44,8 @@ class ActualTimesController < ApplicationController
   def update
     @actual_time = ActualTime.find(params[:id])
 
-    @actual_time.actual_times = params[:actual_times]
-    @actual_time.meet = params[:meet]
+    @actual_time.time = params[:time]
+    @actual_time.meet_id = params[:meet_id]
     @actual_time.place = params[:place]
     @actual_time.goal_times_id = params[:goal_times_id]
 

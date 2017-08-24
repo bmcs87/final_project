@@ -12,7 +12,7 @@ class GoalTimesController < ApplicationController
   end
 
   def new
-    @goal_time = GoalTime.new
+    @goal_time = GoalTime.new meet_id: params[:meet_id]
 
     render("goal_times/new.html.erb")
   end
@@ -20,11 +20,12 @@ class GoalTimesController < ApplicationController
   def create
     @goal_time = GoalTime.new
 
-    @goal_time.goal_times = params[:goal_times]
+    @goal_time.time = params[:time]
     @goal_time.actual_time = params[:actual_time]
-    @goal_time.meet = params[:meet]
+    @goal_time.meet_id = params[:meet_id]
     @goal_time.users_id = params[:users_id]
 
+    #xraise @goal_time.valid?.inspect
     save_status = @goal_time.save
 
     if save_status == true
@@ -36,6 +37,7 @@ class GoalTimesController < ApplicationController
 
   def edit
     @goal_time = GoalTime.find(params[:id])
+    @meet = @goal_time.meet
 
     render("goal_times/edit.html.erb")
   end
@@ -43,10 +45,10 @@ class GoalTimesController < ApplicationController
   def update
     @goal_time = GoalTime.find(params[:id])
 
-    @goal_time.goal_times = params[:goal_times]
-    @goal_time.actual_time = params[:actual_time]
-    @goal_time.meet = params[:meet]
-    @goal_time.users_id = params[:users_id]
+    @goal_time.time = params[:time]
+    # @goal_time.actual_time = params[:actual_time]
+    @goal_time.meet_id = params[:meet_id]
+    # @goal_time.users_id = params[:users_id]
 
     save_status = @goal_time.save
 

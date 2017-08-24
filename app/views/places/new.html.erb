@@ -30,14 +30,14 @@
         </select>
       </div>
 
-      <!-- Goal Time -->
+      <!-- Label and input for goal_times -->
       <div class="form-group">
-        <label for="goal_time" class="control-label">
-          Goal Time
+        <label for="goal_times" class="control-label">
+          Goal time
         </label>
 
-        <input type="text" id="goal_time" name="goal_time" placeholder="Goal Time" class="form-control" value="<%= @place.goal_times %>">
-      </div> -->
+        <input type="text" id="goal_times" name="goal_times" placeholder="Goal time" class="form-control" value="<%= @place.goal_times %>">
+      </div>
       
       <!-- Label and input for Actual Times -->
       <div class="form-group">
@@ -54,7 +54,7 @@
           Place
         </label>
 
-        <input type="text" id="place" name="place" placeholder="Place" class="form-control" value="<%= @place %>">
+        <input type="text" id="place" name="place" placeholder="Place" class="form-control">
       </div>
 
       <button class="btn btn-success">

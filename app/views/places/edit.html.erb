@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Place #<%= @place.id %></h3>
+  <h3>Edit Place </h3>
 </div>
 
 <div class="row">
@@ -23,26 +23,29 @@
         <label for="meet" class="control-label">
           Meet
         </label>
-
-        <input type="text" id="meet" name="meet" placeholder="Meet" class="form-control" value="<%= @place.meet %>">
+        <select class="form-control" name="meet">
+          <% Meet.all.each do |meet| %>
+            <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+          <% end %>  
+        </select>
       </div>
      
       <!-- Label and input for goal_times -->
       <div class="form-group">
         <label for="goal_times" class="control-label">
-          Goal times
+          Goal time
         </label>
 
         <input type="text" id="goal_times" name="goal_times" placeholder="Goal times" class="form-control" value="<%= @place.goal_times %>">
       </div>
 
-      <!-- Label and input for actual_times -->
+      <!-- Label and input for goal_times -->
       <div class="form-group">
         <label for="actual_times" class="control-label">
-          Actual times
+          Actual time
         </label>
 
-        <input type="text" id="actual_times" name="actual_times" placeholder="Actual times" class="form-control" value="<%= @place.actual_times %>">
+        <input type="text" id="actual_times" name="actual_times" placeholder="Actual time" class="form-control" value="<%= @place.actual_times %>">
       </div>
 
       <!-- Label and input for place -->
@@ -51,7 +54,7 @@
            Place
         </label>
 
-        <input type="text" id="place" name="place" placeholder="Place" class="form-control" value="<%= @place %>">
+        <input type="text" id="place" name="place" placeholder="Place" class="form-control">
       </div>
 
       <button class="btn btn-warning">

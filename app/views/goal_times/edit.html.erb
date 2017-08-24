@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Goal Time #<%= @goal_time.id %></h3>
+  <h3>Edit Goal Time </h3>
 </div>
 
 <div class="row">
@@ -18,42 +18,43 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for meet -->
+      <div class="form-group">
+        <label for="meet" class="control-label">
+          Meet
+        </label>
+        <select class="form-control" name="meet_id">
+          <% Meet.all.each do |meet| %>
+            <% if meet.id == @goal_time.meet_id %>
+              <option selected="<%= @goal_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% else %>
+              <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% end %>
+          <% end %>  
+        </select>
+      </div>
+      
       <!-- Label and input for goal_times -->
       <div class="form-group">
         <label for="goal_times" class="control-label">
           Goal times
         </label>
 
-        <input type="text" id="goal_times" name="goal_times" placeholder="Goal times" class="form-control" value="<%= @goal_time.goal_times %>">
+        <input type="text" id="goal_times" name="time" placeholder="Goal times" class="form-control" value="<%= @goal_time.time.strftime("%M:%I") rescue nil %>">
       </div>
 
       <!-- Label and input for actual_time -->
-      <div class="form-group">
-        <label for="actual_time" class="control-label">
-          Actual time
-        </label>
+      <!--<div class="form-group">-->
+      <!--  <label for="actual_time" class="control-label">-->
+      <!--    Actual time-->
+      <!--  </label>-->
 
-        <input type="text" id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" value="<%= @goal_time.actual_time %>">
-      </div>
+      <!--  <input type="text" id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" value="<%= @goal_time.actual_time %>">-->
+      <!--</div>-->
 
-      <!-- Label and input for meet -->
-      <div class="form-group">
-        <label for="meet" class="control-label">
-          Meet
-        </label>
 
-        <input type="text" id="meet" name="meet" placeholder="Meet" class="form-control" value="<%= @goal_time.meet %>">
-      </div>
-
-      <!-- Label and input for users_id -->
-      <div class="form-group">
-        <label for="users_id" class="control-label">
-          Users
-        </label>
-
-        <input type="text" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @goal_time.users_id %>">
-      </div>
-
+        <input type="hidden" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @goal_time.users_id %>">
+      
       <button class="btn btn-warning">
         Update Goal Time
       </button>

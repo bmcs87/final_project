@@ -11,17 +11,13 @@
       <tr>
         <th>Meet</th>
         <th>Goal time</th>
-        <th>Actual time</th>
-        <th>Place</th>
+        <th>Actions</th>
       </tr>
 
       <% @goal_times.each do |goal_time| %>
       <tr>
-        <td><%= goal_time.meet %></td>
-        <td><%= goal_time.goal_times %></td>
-        <td><%= goal_time.actual_time %></td>
-        <td><%= goal_time.place %></td>
-        <td><%= goal_time.users_id %></td>
+        <td><%= goal_time.meet.meet_name rescue nil %></td>
+        <td><%= goal_time.time.strftime("%I:%M") rescue nil %></td>
         <td>
           <a href="/goal_times/<%= goal_time.id %>" class="btn btn-primary">Show</a>
           <a href="/goal_times/<%= goal_time.id %>/edit" class="btn btn-warning">Edit</a>

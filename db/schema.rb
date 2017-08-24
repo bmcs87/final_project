@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823013608) do
+ActiveRecord::Schema.define(version: 20170824183535) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20170823013608) do
   end
 
   create_table "actual_times", force: :cascade do |t|
-    t.time "actual_times"
-    t.string "meet"
+    t.time "time"
     t.string "place"
     t.integer "goal_times_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "meet_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 20170823013608) do
   end
 
   create_table "goal_times", force: :cascade do |t|
-    t.time "goal_times"
+    t.time "time"
     t.time "actual_time"
-    t.string "meet"
     t.integer "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "meet_id"
   end
 
   create_table "meets", force: :cascade do |t|
@@ -69,10 +69,9 @@ ActiveRecord::Schema.define(version: 20170823013608) do
     t.string "athlete_notes"
     t.integer "places_id"
     t.integer "actual_times_id"
-    t.integer "goal_times_id"
-    t.integer "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "places", force: :cascade do |t|

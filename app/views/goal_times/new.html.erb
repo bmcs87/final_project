@@ -23,9 +23,13 @@
         <label for="meet" class="control-label">
           Meet
         </label>
-        <select class="form-control" name="meet">
+        <select class="form-control" name="meet_id">
           <% Meet.all.each do |meet| %>
-            <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% if meet.id == @goal_time.meet_id %>
+              <option selected="<%= @goal_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% else %>
+              <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% end %>
           <% end %>  
         </select>
       </div>
@@ -36,7 +40,7 @@
           Goal time
         </label>
 
-        <input type="text" id="goal_times" name="goal_times" placeholder="Goal time" class="form-control" value="<%= @goal_time.goal_times %>">
+        <input type="text" id="goal_times" name="time" placeholder="Goal time" class="form-control">
       </div>
 
       <!-- Label and input for actual_time -->
@@ -45,7 +49,7 @@
           Actual time
         </label>
 
-        <input type="text" id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" value="<%= @goal_time.actual_time %>">
+        <textarea id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" rows="1"><%= @goal_time.actual_time %></textarea>
       </div>
 
       <!-- Label and input for places -->
@@ -54,11 +58,12 @@
           Place
         </label>
 
-        <input type="text" id="places" name="places" placeholder="Place" class="form-control" value="<%= @goal_time.places %>">
+        <input type="text" id="places" name="places" placeholder="Place" class="form-control">
       </div>
 
       <!-- Label and input for users_id -->
-        <input type="hidden" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @goal_time.users_id %>">
+      <input type="hidden" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @goal_time.users_id %>">
+        
 
       <button class="btn btn-success">
         Create Goal Time

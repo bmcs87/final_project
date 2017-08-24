@@ -23,8 +23,16 @@
         <label for="meet" class="control-label">
           Meet
         </label>
+        <select class="form-control" name="meet_id">
+          <% Meet.all.each do |meet| %>
+            <% if meet.id == @actual_time.meet_id %>
+              <option selected="<%= @actual_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% else %>
+              <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% end %>
 
-        <input type="text" id="meet" name="meet" placeholder="Meet" class="form-control" value="<%= @actual_time.meet %>">
+          <% end %>  
+        </select>
       </div>
       
         <!-- Label and input for goal_times_id -->
@@ -42,7 +50,7 @@
           Actual times
         </label>
 
-        <input type="text" id="actual_times" name="actual_times" placeholder="Actual times" class="form-control" value="<%= @actual_time.actual_times %>">
+        <input type="text" id="actual_times" name="time" placeholder="Actual times" class="form-control">
       </div>
 
       <!-- Label and input for place -->

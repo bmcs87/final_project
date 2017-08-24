@@ -55,22 +55,22 @@
       </div>
       
       <!-- Label and input for goal_times_id -->
-      <div class="form-group">
-        <label for="goal_times_id" class="control-label">
-          Goal times
-        </label>
+      <!--<div class="form-group">-->
+      <!--  <label for="goal_times_id" class="control-label">-->
+      <!--    Goal times-->
+      <!--  </label>-->
 
-        <input type="text" id="goal_times_id" name="goal_times_id" placeholder="Goal times" class="form-control" value="<%= @meet.goal_times_id %>">
-      </div>
+      <!--  <input type="text" id="goal_times_id" name="goal_times_id" placeholder="Goal times" class="form-control">-->
+      <!--</div>-->
 
       <!-- Label and input for actual_times_id -->
-      <div class="form-group">
-        <label for="actual_times_id" class="control-label">
-          Actual times
-        </label>
+      <!--<div class="form-group">-->
+      <!--  <label for="actual_times_id" class="control-label">-->
+      <!--    Actual times-->
+      <!--  </label>-->
 
-        <input type="text" id="actual_times_id" name="actual_times_id" placeholder="Actual times" class="form-control" value="<%= @meet.actual_times_id %>">
-      </div>
+      <!--  <textarea id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" rows="1"><%= @meet.actual_times_id %></textarea>-->
+      <!--</div>-->
 
       <!-- Label and input for places_id -->
       <div class="form-group">
@@ -91,7 +91,7 @@
       </div>
 
       <!-- Label and input for users_id -->
-        <input type="hidden" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @meet.users_id %>">
+        <input type="hidden" id="users_id" name="user_id" placeholder="Users" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">

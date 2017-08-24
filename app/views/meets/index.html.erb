@@ -13,9 +13,9 @@
         <th>City</th>
         <th>State</th>
         <th>Date</th>
-        <th>Places</th>
         <th>Goal times</th>
         <th>Actual times</th>
+        <th>Places</th>
         <th>Athlete notes</th>
         <!-- <th>Users</th>
         <th>Actions</th> -->
@@ -27,10 +27,10 @@
         <td><%= meet.city %></td>
         <td><%= meet.state %></td>
         <td><%= meet.date %></td>
-        <td><%= meet.goal_times_id %></td>
-        <td><%= meet.actual_times_id %></td>
+        <td><%= meet.goal_time.time.strftime("%I:%M") rescue nil %></td>
+        <td><%= raw meet.actual_times.collect(&:time).join('<br/>') %></td>
         <td><%= meet.places_id %></td>
-        <td><%= meet.users_id %></td>
+        <td><%= meet.user.username rescue nil %></td>
         <td><%= meet.athlete_notes %></td>
         <td>
           <a href="/meets/<%= meet.id %>" class="btn btn-primary">Show</a>

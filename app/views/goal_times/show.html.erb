@@ -1,21 +1,23 @@
 <div class="page-header">
-  <h3>Goal Time #<%= @goal_time.id %></h3>
+  <!-- <h3>Goal Time for <#%= Meet.find_by(:id =>goal_time.meet) %> Meet</h3> -->
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Goal times</dt>
-      <dd><%= @goal_time.goal_times %></dd>
-
-      <dt>Actual time</dt>
-      <dd><%= @goal_time.actual_time %></dd>
-
       <dt>Meet</dt>
-      <dd><%= @goal_time.meet %></dd>
+      <dd><%= @goal_time.meet.meet_name rescue nil %></dd>
+      
+      <dt>Goal times</dt>
+      <dd><%= @goal_time.time.strftime("%I:%M") rescue nil %></dd>
 
-      <dt>Users</dt>
-      <dd><%= @goal_time.users_id %></dd>
+      <!--<dt>Actual time</dt>-->
+      <dd><%#= @goal_time.actual_time %></dd>
+      
+      <!--<dt>Place</dt>-->
+      <dd><%#= @goal_time.places %></dd>
+
+      <dd><%#= @goal_time.users_id %></dd>
 
     </dl>
 

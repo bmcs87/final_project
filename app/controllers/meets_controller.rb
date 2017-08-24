@@ -26,9 +26,9 @@ class MeetsController < ApplicationController
     @meet.date = params[:date]
     @meet.athlete_notes = params[:athlete_notes]
     @meet.places_id = params[:places_id]
-    @meet.actual_times_id = params[:actual_times_id]
-    @meet.goal_times_id = params[:goal_times_id]
-    @meet.users_id = params[:users_id]
+    # @meet.actual_time_id = params[:actual_times_id]
+    # @meet.goal_time_id = params[:goal_times_id]
+    @meet.user_id = params[:user_id]
 
     #raise @meet.valid?.inspect
     save_status = @meet.save
@@ -55,9 +55,9 @@ class MeetsController < ApplicationController
     @meet.date = params[:date]
     @meet.athlete_notes = params[:athlete_notes]
     @meet.places_id = params[:places_id]
-    @meet.actual_times_id = params[:actual_times_id]
-    @meet.goal_times_id = params[:goal_times_id]
-    @meet.users_id = params[:users_id]
+    # @meet.actual_times_id = params[:actual_times_id]
+    # @meet.goal_times_id = params[:goal_times_id]
+    @meet.user_id = params[:user_id]
 
     save_status = @meet.save
 

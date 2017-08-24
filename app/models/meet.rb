@@ -10,17 +10,20 @@
 #  athlete_notes   :string
 #  places_id       :integer
 #  actual_times_id :integer
-#  goal_times_id   :integer
-#  users_id        :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
+
 
 class Meet < ApplicationRecord
     
-has_many :users
-has_many :goal_times
+# has_many :actual_times
+# has_many :places
+
+belongs_to :user
+has_one :goal_time
+has_one :place
 has_many :actual_times
-has_many :places
     
 end

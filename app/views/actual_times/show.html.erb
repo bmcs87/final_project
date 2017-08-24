@@ -6,13 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Meet</dt>
-      <dd><%= @actual_time.meet %></dd>
+      <dd><%= @actual_time.meet.meet_name rescue 'No Meet Selected' %></dd>
      
       <dt>Goal times</dt>
       <dd><%= @actual_time.goal_times_id %></dd>
       
       <dt>Actual times</dt>
-      <dd><%= @actual_time.actual_times %></dd>
+      <dd><%= @actual_time.time.strftime('%I:%M') rescue nil %></dd>
 
       <dt>Place</dt>
       <dd><%= @actual_time.place %></dd>
