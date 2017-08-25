@@ -1,0 +1,71 @@
+<!-- Validation failure messages -->
+<% if @actual_time.errors.any? %>
+  <% @actual_time.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Results</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_actual_time" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meet -->
+      <div class="form-group">
+        <label for="meet" class="control-label">
+          Meet
+        </label>
+        <select class="form-control" name="meet_id">
+          <% Meet.all.each do |meet| %>
+            <% if meet.id == @actual_time.meet_id %>
+              <option selected="<%= @actual_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% else %>
+              <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% end %>
+          <% end %>  
+        </select>
+      </div>
+      
+        <!-- Label and input for goal_times_id -->
+      <div class="form-group">
+        <label for="goal_times_id" class="control-label">
+          Goal times
+        </label>
+
+        <input type="text" id="goal_times_id" name="goal_times_id" placeholder="Goal times" class="form-control" value="<%= @actual_time.goal_times_id %>">
+      </div>
+      
+      <!-- Label and input for actual_times -->
+      <div class="form-group">
+        <label for="actual_times" class="control-label">
+          Actual times
+        </label>
+
+        <input type="text" id="actual_times" name="time" placeholder="Actual times" class="form-control">
+      </div>
+
+      <!-- Label and input for place -->
+      <div class="form-group">
+        <label for="place" class="control-label">
+          Place
+        </label>
+
+        <input type="text" id="place" name="place" placeholder="Place" class="form-control" value="<%= @actual_time.place %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Actual Time
+      </button>
+      or
+      <a href="/actual_times">Cancel</a>
+    </form>
+  </div>
+</div>

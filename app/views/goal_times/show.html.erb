@@ -1,0 +1,37 @@
+<div class="page-header">
+  <!-- <h3>Goal Time for <#%= Meet.find_by(:id =>goal_time.meet) %> Meet</h3> -->
+   <h2>My Goal Time for <%= @goal_time.meet.meet_name rescue nil %> </h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Meet</dt>
+      <dd><%= @goal_time.meet.meet_name rescue nil %></dd>
+      
+      <dt>Goal times</dt>
+      <dd><%= @goal_time.time.strftime("%I:%M") rescue nil %></dd>
+
+      <!--<dt>Actual time</dt>-->
+      <dd><%#= @goal_time.actual_time %></dd>
+      
+      <!--<dt>Place</dt>-->
+      <dd><%#= @goal_time.places %></dd>
+
+      <dd><%#= @goal_time.users_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/goal_times" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/goal_times/<%= @goal_time.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_goal_time/<%= @goal_time.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

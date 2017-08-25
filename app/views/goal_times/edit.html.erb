@@ -1,0 +1,65 @@
+<!-- Validation failure messages -->
+<% if @goal_time.errors.any? %>
+  <% @goal_time.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Goal Time </h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_goal_time/<%= @goal_time.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meet -->
+      <div class="form-group">
+        <label for="meet" class="control-label">
+          Meet
+        </label>
+        <select class="form-control" name="meet_id">
+          <% Meet.all.each do |meet| %>
+            <% if meet.id == @goal_time.meet_id %>
+              <option selected="<%= @goal_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% else %>
+              <option value="<%= meet.id %>"><%= meet.meet_name %></option>
+            <% end %>
+          <% end %>  
+        </select>
+      </div>
+      
+      <!-- Label and input for goal_times -->
+      <div class="form-group">
+        <label for="goal_times" class="control-label">
+          Goal times
+        </label>
+
+        <input type="text" id="goal_times" name="time" placeholder="Goal times" class="form-control" value="<%= @goal_time.time.strftime("%M:%I") rescue nil %>">
+      </div>
+
+      <!-- Label and input for actual_time -->
+      <!--<div class="form-group">-->
+      <!--  <label for="actual_time" class="control-label">-->
+      <!--    Actual time-->
+      <!--  </label>-->
+
+      <!--  <input type="text" id="actual_time" name="actual_time" placeholder="Actual time" class="form-control" value="<%= @goal_time.actual_time %>">-->
+      <!--</div>-->
+
+
+        <input type="hidden" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @goal_time.users_id %>">
+      
+      <button class="btn btn-warning">
+        Update Goal Time
+      </button>
+      or
+      <a href="/goal_times/<%= @goal_time.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
