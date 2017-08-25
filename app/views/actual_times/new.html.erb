@@ -24,13 +24,12 @@
           Meet
         </label>
         <select class="form-control" name="meet_id">
-          <% @meets.all.each do |meet| %>
+          <% Meet.all.each do |meet| %>
             <% if meet.id == @actual_time.meet_id %>
               <option selected="<%= @actual_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
             <% else %>
               <option value="<%= meet.id %>"><%= meet.meet_name %></option>
             <% end %>
-
           <% end %>  
         </select>
       </div>
