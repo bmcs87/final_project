@@ -15,10 +15,10 @@
         <th>Date</th>
         <th>Goal times</th>
         <th>Actual times</th>
-        <th>Places</th>
+        <th>Place</th>
+        <th>Athlete </th>
         <th>Athlete notes</th>
-        <!-- <th>Users</th>
-        <th>Actions</th> -->
+        <!-- <th>Actions</th> -->
       </tr>
 
       <% @meets.each do |meet| %>
@@ -28,7 +28,8 @@
         <td><%= meet.state %></td>
         <td><%= meet.date %></td>
         <td><%= meet.goal_time.time.strftime("%I:%M") rescue nil %></td>
-        <td><%= raw meet.actual_times.collect(&:time).join('<br/>') %></td>
+        <td><%= meet.actual_times[0].time.strftime("%I:%M") rescue nil %></td>
+        <!-- <td><#%= raw meet.actual_times.collect(&:time).join('<br/>') %></td> -->
         <td><%= meet.places_id %></td>
         <td><%= meet.user.username rescue nil %></td>
         <td><%= meet.athlete_notes %></td>

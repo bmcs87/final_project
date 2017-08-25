@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Actual Time for <%= @actual_time.meet.meet_name rescue nil %> Meet</h3>
+  <h3>Edit Results for <%= @actual_time.meet.meet_name rescue nil %> Meet</h3>
 </div>
 
 <div class="row">
@@ -24,7 +24,7 @@
           Meet
         </label>
         <select class="form-control" name="meet_id">
-          <% Meet.all.each do |meet| %>
+          <% @meets.each do |meet| %>
             <% if meet.id == @actual_time.meet_id %>
               <option selected="<%= @actual_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
             <% else %>
@@ -48,7 +48,7 @@
         <label for="actual_times" class="control-label">
           Actual Time
         </label>
-        <input type="text" id="actual_times" name="time" placeholder="Actual times" class="form-control" value="<%= @actual_time.time %>">
+        <input type="text" id="actual_times" name="time" placeholder="Actual times" class="form-control" value="<%= @actual_time.time.strftime("%I:%M")  %>">
 
       </div>
 

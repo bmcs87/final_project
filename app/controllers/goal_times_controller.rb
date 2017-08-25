@@ -12,6 +12,7 @@ class GoalTimesController < ApplicationController
   end
 
   def new
+    @meets = Meet.where(:user_id => current_user.id)
     @goal_time = GoalTime.new meet_id: params[:meet_id]
 
     render("goal_times/new.html.erb")

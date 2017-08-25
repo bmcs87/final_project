@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Actual Time</h3>
+  <h3>Add Results</h3>
 </div>
 
 <div class="row">
@@ -24,7 +24,7 @@
           Meet
         </label>
         <select class="form-control" name="meet_id">
-          <% Meet.all.each do |meet| %>
+          <% @meets.all.each do |meet| %>
             <% if meet.id == @actual_time.meet_id %>
               <option selected="<%= @actual_time.meet_id %>" value="<%= meet.id %>"><%= meet.meet_name %></option>
             <% else %>

@@ -1,5 +1,6 @@
 <div class="page-header">
   <!-- <h3>Goal Time for <#%= Meet.find_by(:id =>goal_time.meet) %> Meet</h3> -->
+   <h2>My Goal Time for <%= @goal_time.meet.meet_name rescue nil %> </h2>
 </div>
 
 <div class="row">

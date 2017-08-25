@@ -14,7 +14,7 @@
 class ActualTime < ApplicationRecord
     
 # has_many :users, :class_name => "User"    
-# belongs_to :goal_times, :class_name => "GoalTime"
+belongs_to :goal_times, :class_name => "GoalTime"
 
 
 belongs_to :meet

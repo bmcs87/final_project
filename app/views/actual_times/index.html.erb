@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Actual times
-    <a href="/actual_times/new" class="btn btn-lg btn-success">New Actual time</a>
+    My Results
+    <a href="/actual_times/new" class="btn btn-lg btn-success">New Result</a>
   </h1>
 </div>
 
@@ -16,10 +16,11 @@
       </tr>
 
       <% @actual_times.each do |actual_time| %>
+      <% if !actual_time.nil? %>
       <tr>
-        <td><%= actual_time.meet %></td>
-        <td><%= actual_time.goal_times_id %></td>
-        <td><%= actual_time.time %></td>
+        <td><%= actual_time.meet.nil? ? 'Default' : actual_time.meet.meet_name %></td>
+        <td><%= actual_time.meet.goal_time.time.strftime("%I:%M") rescue nil %></td>
+        <td><%= actual_time.meet.actual_times[0].time.strftime("%I:%M") rescue nil %></td>
         <td><%= actual_time.place %></td>
 
         <td>
@@ -28,6 +29,7 @@
           <a href="/delete_actual_time/<%= actual_time.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
+      <% end %>
       <% end %>
     </table>
   </div>

@@ -1,6 +1,14 @@
 class ActualTimesController < ApplicationController
   def index
-    @actual_times = ActualTime.all
+    @actual_times = []
+    meets = Meet.where(:user_id => current_user.id)
+    meets.each do |meet| 
+      meet.actual_times.each do |actual_time|
+        @actual_times << actual_time
+      end
+    end
+    
+    # @actual_times = ActualTime.where(:)
 
     render("actual_times/index.html.erb")
   end
@@ -36,22 +44,23 @@ class ActualTimesController < ApplicationController
   end
 
   def edit
+    @meets = Meet.where(:user_id => current_user.id)
     @actual_time = ActualTime.find(params[:id])
 
     render("actual_times/edit.html.erb")
   end
 
   def update
+    @meets = Meet.where(:user_id => current_user.id)
     @actual_time = ActualTime.find(params[:id])
+    # goal_time = GoalTime  
 
     @actual_time.time = params[:time]
-    @actual_time.meet_id = params[:meet_id]
+    #@actual_time.meet_id = params[:meet_id]
     @actual_time.place = params[:place]
     @actual_time.goal_times_id = params[:goal_times_id]
 
-    save_status = @actual_time.save
-
-    if save_status == true
+    if @actual_time.save
       redirect_to("/actual_times/#{@actual_time.id}", :notice => "Actual time updated successfully.")
     else
       render("actual_times/edit.html.erb")

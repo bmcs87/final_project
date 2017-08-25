@@ -1,11 +1,12 @@
 class MeetsController < ApplicationController
   def index
-    @meets = Meet.all
+    @meets = Meet.where(:user_id => current_user.id)
 
     render("meets/index.html.erb")
   end
 
   def show
+    @current_user = current_user
     @meet = Meet.find(params[:id])
 
     render("meets/show.html.erb")
@@ -72,11 +73,11 @@ class MeetsController < ApplicationController
     @meet = Meet.find(params[:id])
 
     @meet.destroy
-
-    if URI(request.referer).path == "/meets/#{@meet.id}"
-      redirect_to("/", :notice => "Meet deleted.")
-    else
-      redirect_to(:back, :notice => "Meet deleted.")
-    end
+    redirect_to request.referrer || root_url, :notice => "Meet deleted."
+    # if URI(request.referer).path == "/meets/#{@meet.id}"
+      
+    # else
+    #   redirect_to(:back, :notice => "Meet deleted.")
+    # end
   end
 end
